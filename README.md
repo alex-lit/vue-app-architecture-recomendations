@@ -63,9 +63,25 @@ not dead
 - [Nuxt.js](https://nuxtjs.org/) - фреймворк для разработки универсальных
   приложений
 
+  Полезные расширения для nuxt:
+
+  - [apollo](https://github.com/nuxt-community/apollo-module)
+  - [auth](https://auth.nuxtjs.org/)
+  - [axios](https://axios.nuxtjs.org/)
+  - [content](https://content.nuxtjs.org/installation/)
+  - [i18n](https://i18n.nuxtjs.org/basic-usage/)
+  - [image](https://image.nuxtjs.org/api/$img/)
+  - [sitemap](https://sitemap.nuxtjs.org/)
+
+  Официальный список расширений:
+
+  - [modules.nuxtjs.org](https://modules.nuxtjs.org/)
+
 ### Работа с API
 
 - [Apollo Client](https://apollo.vuejs.org/) - REST/GQL клиент
+  - [apollo-link-rest](https://www.apollographql.com/docs/react/api/link/apollo-link-rest/) -
+    расширение Apollo для работы с REST API
 
 ### Стилизация
 
@@ -94,6 +110,7 @@ not dead
     [middleware] # функции выполняемые перед переходом по страницам
     [pages] # страницы
     [plugins] # плагины Vue.js и их конфиги
+    [router] # маршрутизатор
     [static] # статические ресурсы (robots.txt, иконки и т.д)
     [store] # модули состояния приложения (Vuex)
     [utils] # утилиты
