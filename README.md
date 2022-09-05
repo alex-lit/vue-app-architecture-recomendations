@@ -83,15 +83,14 @@ not dead
   - [apollo-link-rest](https://www.apollographql.com/docs/react/api/link/apollo-link-rest/) -
     расширение Apollo для работы с REST API
 
-### Стилизация
+либо
 
-- [BEM](https://ru.bem.info/) - методология Yandex для построения масштабируемых
-  интерфейсов
-- [SCSS](https://sass-lang.com/) - CSS препроцессор
+- [Vue Query](https://vue-query.vercel.app/) - библиотека для работы с
+  асинхронными данными во Vue
 
 ### Тестирование
 
-- [Jest](https://facebook.github.io/jest/) - юнит-тестирование
+- [Vitest](https://vitest.dev/) - юнит-тестирование
 
 ## Файловая архитектура проекта
 
@@ -112,7 +111,7 @@ not dead
     [plugins] # плагины Vue.js и их конфиги
     [router] # маршрутизатор
     [static] # статические ресурсы (robots.txt, иконки и т.д)
-    [store] # модули состояния приложения (Vuex)
+    [store] # модули состояния приложения
     [utils] # утилиты
 ...конфиги
 ```
@@ -124,7 +123,8 @@ not dead
 ### Файловая структура
 
 Файлы компонент экспортируются из индексного файла. Дочерние компоненты и ассеты
-находятся в поддиректориях.
+находятся в поддиректориях (фрактальная архитектура, крайне желательно
+придерживаться максимально допустимого уровня вложенности - 2).
 
 Пример:
 
@@ -132,15 +132,19 @@ not dead
 [components]
     [my-component]
         my-component.component.vue # код компонента
+        my-component.interfaces.ts # интерфейсы
         my-component.spec.ts # тесты
-        index.ts # экспорт
+        my-component.store.ts # локальный стор
+        ...
+        index.ts # экспорт компонента, констант, интерфейсов и т.д.
         [components]
-            [my-component-partial]
+            [my-component-partial] # дочерний компонент
                 my-component-partial.component.vue # код компонента
-                my-component-partial.spec.ts # тесты
+                ...
                 index.ts # экспорт
         [images]
             logo.svg # изображение, уникальное для текущего компонента (my-component)
+            ...
     [my-another-component]
     ...
 ```
@@ -149,18 +153,20 @@ not dead
 
 ### Типизация
 
-Для типизации компонент используется синтаксис на основе классов:
-[vue-property-decorator](https://github.com/kaorun343/vue-property-decorator) +
-[vuex-class](https://github.com/ktsn/vuex-class).
+Применять `script setup`.
 
-### Стили
+### Стилизация
 
 - Инкапсуляция:
   [Vue Scoped CSS](https://vue-loader.vuejs.org/ru/guide/scoped-css.html)
-- Препроцессор: [SCSS](https://sass-lang.com/)
-- Методология: [BEM](https://ru.bem.info/) (1 компонент - 1 блок)
+- [BEM](https://ru.bem.info/) - методология Yandex для построения масштабируемых
+  интерфейсов (1 компонент - 1 блок)
+- [SCSS](https://sass-lang.com/) - CSS препроцессор
+- При разработке кастомной библиотеки компонентов использовать
+  [Open Props](https://open-props.style/)
 
-**Применение фреймворков типа `Bootstrap`, `Tailwind` и т.д. не допускается.**
+**Применение фреймворков типа `Bootstrap`, `Tailwind` и т.д. крайне
+нежелательно.**
 
 ## API
 
@@ -179,7 +185,7 @@ not dead
 
 ## Хранилище данных
 
-Использовать Vuex, сегментация по модулям.
+Использовать [Pinia](https://pinia.vuejs.org/).
 
 > Рекомендуется использовать стор только в случае крайней необходимости, все
 > стандартные взаимодействия между компонентами решать основным способом:
@@ -187,15 +193,7 @@ not dead
 
 ## Локализация
 
-Стандартный пакет [Vue I18n](https://kazupon.github.io/vue-i18n/). Языковые
-файлы - 1 файл на 1 язык для всего приложения:
-
-```toml
-[locales]
-    ru.json
-    en.json
-    ...
-```
+Стандартный пакет [Vue I18n](https://kazupon.github.io/vue-i18n/).
 
 Структура файлов локализации `плоская`, имена ключей в `CONSTANT_CASE` с
 префиксом, пример:
