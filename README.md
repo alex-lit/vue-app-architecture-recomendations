@@ -34,7 +34,7 @@
 - [Prettier](https://prettier.io/)
   ([пример конфигурации](https://github.com/alex-lit/config-prettier))
 
-Пример пакта, объединяющего в себе все вышеперечисленные линтеры:
+Пример пакета, объединяющего в себе все вышеперечисленные линтеры:
 [lint-kit](https://github.com/alex-lit/lint-kit).
 
 ## Поддержка браузеров
@@ -158,11 +158,11 @@ not dead
 ### Стилизация
 
 - Инкапсуляция:
-  [Vue Scoped CSS](https://vue-loader.vuejs.org/ru/guide/scoped-css.html)
+  [Scoped CSS](https://vuejs.org/api/sfc-css-features.html#scoped-css) либо [CSS Modules](https://vuejs.org/api/sfc-css-features.html#css-modules)
 - [BEM](https://ru.bem.info/) - методология Yandex для построения масштабируемых
   интерфейсов (1 компонент - 1 блок)
 - [SCSS](https://sass-lang.com/) - CSS препроцессор
-- При разработке кастомной библиотеки компонентов использовать
+- При разработке кастомного UI-кита использовать
   [Open Props](https://open-props.style/)
 
 **Применение фреймворков типа `Bootstrap`, `Tailwind` и т.д. крайне
